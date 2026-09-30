@@ -1,1 +1,413 @@
 
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>سوقنا | تسوّق واربح</title>
+
+  <style>
+
+    * { box-sizing: border-box; }
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, sans-serif;
+
+      background: #f5f7f4;
+
+      color: #202820;
+
+    }
+
+    header {
+
+      background: #176b45;
+
+      color: white;
+
+      padding: 22px 16px;
+
+      border-radius: 0 0 22px 22px;
+
+    }
+
+    .top {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+    }
+
+    h1 { margin: 0; font-size: 27px; }
+
+    .tagline { margin-top: 9px; font-size: 14px; }
+
+    .search {
+
+      width: 100%;
+
+      padding: 13px;
+
+      border: 0;
+
+      border-radius: 12px;
+
+      margin-top: 20px;
+
+      font-size: 16px;
+
+    }
+
+    main { padding: 18px 14px 90px; }
+
+    h2 { font-size: 20px; }
+
+    .categories {
+
+      display: flex;
+
+      gap: 9px;
+
+      overflow-x: auto;
+
+      padding-bottom: 8px;
+
+    }
+
+    .category {
+
+      flex-shrink: 0;
+
+      border: 1px solid #dce5dc;
+
+      background: white;
+
+      padding: 11px 15px;
+
+      border-radius: 20px;
+
+      cursor: pointer;
+
+    }
+
+    .banner {
+
+      margin-top: 18px;
+
+      padding: 20px;
+
+      border-radius: 16px;
+
+      background: #e1f2e5;
+
+      line-height: 1.8;
+
+    }
+
+    .products {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 12px;
+
+    }
+
+    .product {
+
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 12px;
+
+      box-shadow: 0 2px 8px #00000008;
+
+    }
+
+    .photo {
+
+      background: #edf3ed;
+
+      height: 105px;
+
+      border-radius: 10px;
+
+      display: grid;
+
+      place-items: center;
+
+      font-size: 43px;
+
+    }
+
+    .product h3 { font-size: 16px; margin-bottom: 8px; }
+
+    .price { color: #176b45; font-weight: bold; }
+
+    button {
+
+      border: 0;
+
+      border-radius: 9px;
+
+      padding: 10px;
+
+      cursor: pointer;
+
+      font-size: 14px;
+
+    }
+
+    .add {
+
+      width: 100%;
+
+      background: #176b45;
+
+      color: white;
+
+      margin-top: 10px;
+
+    }
+
+    .bottom {
+
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      right: 0;
+
+      background: white;
+
+      border-top: 1px solid #ddd;
+
+      display: flex;
+
+      justify-content: space-around;
+
+      padding: 13px 5px;
+
+      color: #176b45;
+
+    }
+
+    .hidden { display: none; }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <div class="top">
+
+      <h1>🛍️ سوقنا</h1>
+
+      <div>🛒 <span id="cart">0</span></div>
+
+    </div>
+
+    <div class="tagline">سوق واحد.. فرص للجميع!</div>
+
+    <input class="search" id="search"
+
+      placeholder="ابحث عن منتج..." />
+
+  </header>
+
+  <main>
+
+    <section class="banner">
+
+      <strong>أهلاً بك في سوقنا!</strong><br>
+
+      تسوّق المنتجات المتنوعة، وشارك في البيع
+
+      واربح عمولات من المبيعات الحقيقية.
+
+    </section>
+
+    <h2>تصفّح الأقسام</h2>
+
+    <div class="categories">
+
+      <button class="category" data-category="الكل">الكل</button>
+
+      <button class="category" data-category="إلكترونيات">📱 إلكترونيات</button>
+
+      <button class="category" data-category="ملابس">👕 ملابس</button>
+
+      <button class="category" data-category="منزل">🏠 المنزل</button>
+
+      <button class="category" data-category="أخرى">📦 أخرى</button>
+
+    </div>
+
+    <h2>منتجات مختارة</h2>
+
+    <div class="products" id="products">
+
+      <article class="product" data-name="سماعات لاسلكية"
+
+        data-category="إلكترونيات">
+
+        <div class="photo">🎧</div>
+
+        <h3>سماعات لاسلكية</h3>
+
+        <div class="price">25,000 جنيه</div>
+
+        <button class="add">أضف إلى السلة</button>
+
+      </article>
+
+      <article class="product" data-name="ساعة يد"
+
+        data-category="إلكترونيات">
+
+        <div class="photo">⌚</div>
+
+        <h3>ساعة يد</h3>
+
+        <div class="price">18,000 جنيه</div>
+
+        <button class="add">أضف إلى السلة</button>
+
+      </article>
+
+      <article class="product" data-name="قميص رجالي"
+
+        data-category="ملابس">
+
+        <div class="photo">👕</div>
+
+        <h3>قميص رجالي</h3>
+
+        <div class="price">15,000 جنيه</div>
+
+        <button class="add">أضف إلى السلة</button>
+
+      </article>
+
+      <article class="product" data-name="حقيبة"
+
+        data-category="أخرى">
+
+        <div class="photo">🎒</div>
+
+        <h3>حقيبة عملية</h3>
+
+        <div class="price">20,000 جنيه</div>
+
+        <button class="add">أضف إلى السلة</button>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <nav class="bottom">
+
+    <span>🏠 الرئيسية</span>
+
+    <span>🔎 البحث</span>
+
+    <span>🛒 السلة</span>
+
+    <span>👤 حسابي</span>
+
+  </nav>
+
+  <script>
+
+    let count = 0;
+
+    const cart = document.getElementById("cart");
+
+    document.querySelectorAll(".add").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        count++;
+
+        cart.textContent = count;
+
+        button.textContent = "تمت الإضافة ✓";
+
+      });
+
+    });
+
+    let selectedCategory = "الكل";
+
+    function filterProducts() {
+
+      const query = document.getElementById("search")
+
+        .value.trim().toLowerCase();
+
+      document.querySelectorAll(".product").forEach(product => {
+
+        const name = product.dataset.name.toLowerCase();
+
+        const category = product.dataset.category;
+
+        const matchesName = name.includes(query);
+
+        const matchesCategory =
+
+          selectedCategory === "الكل" ||
+
+          category === selectedCategory;
+
+        product.classList.toggle(
+
+          "hidden", !(matchesName && matchesCategory)
+
+        );
+
+      });
+
+    }
+
+    document.getElementById("search")
+
+      .addEventListener("input", filterProducts);
+
+    document.querySelectorAll(".category").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        selectedCategory = button.dataset.category;
+
+        filterProducts();
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>
